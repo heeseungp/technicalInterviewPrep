@@ -18,11 +18,19 @@ class LinkedList {
 
 		int get_head_data() const;
 		int get_tail_data() const;
-		/*
-		Remove Duplicates: Write code to remove duplicates from an unsorted linked list
-		*/
+
+		Node* get_head_node() const;
+		Node* get_tail_node() const;
+		
+		// Remove Duplicates: Write code to remove duplicates from an unsorted linked list
 		void removeDups();
 
+		// Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
+		void lastKth(int k);
+		// Recursive solution
+		int recur_lastKth(Node* node, int k);
+		// Iterative solution
+		void iter_lastKth(int k);
 	private:
 		Node* head;
 		Node* tail;

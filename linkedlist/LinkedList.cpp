@@ -177,6 +177,17 @@ int LinkedList::get_tail_data() const {
 	return tail->get_data();
 }
 
+
+Node* LinkedList::get_head_node() const {
+	return head;
+}
+
+Node* LinkedList::get_tail_node() const {
+	return tail;
+}
+
+
+//problem 2.1: Remove Duplicate
 void LinkedList::removeDups() {
 	/*
 	Method solved using set
@@ -198,7 +209,7 @@ void LinkedList::removeDups() {
 		}
 	}
 	*/
-	
+
 	// method solved using no temporary buffer
 	if(head != NULL) {
 		Node* current = head;
@@ -216,5 +227,54 @@ void LinkedList::removeDups() {
 			runner = current;
 		}
 
+	}
+}
+
+//problem 2.2 Return kth to last
+void LinkedList::lastKth(int k) {
+// If the size is given (the first last index is 0)
+	if(count-1 < k) {
+		cout << "Invalid k entry" << endl;
+	} else {
+		Node* temp = head;
+		for(int i=0; i<count; i++) {
+			if(i == count-1-k) {
+				cout << "Kth to last: " << temp->get_data() << endl;
+				break;
+			}
+			temp = temp->nextNode();
+		}
+	}
+
+}
+
+// problem 2.2 Return kth to last (recursive solution)
+int LinkedList::recur_lastKth(Node* node, int k) {
+	if(node == NULL) {
+		return 0;
+	}
+
+	int index = this->recur_lastKth(node->nextNode(), k) + 1;
+	if(index-1 == k) {
+		cout << "Kth to Last: " << node->get_data() << endl;
+	}
+	return index;
+}
+
+// problem 2.2 Return kth to last (iteratively)
+void LinkedList::iter_lastKth(int k) {
+	if(count < k-1) {
+		cout << "Invalid k" << endl;
+	} else {
+		Node* current = head;
+		Node* runner = head;
+		for(int i=0; i<k; i++) {
+			runner = runner->nextNode();
+		}
+		while(runner->nextNode() != NULL) {
+			current = current->nextNode();
+			runner = runner->nextNode();
+		}
+		cout << "Kth to last: " << current->get_data() << endl;
 	}
 }

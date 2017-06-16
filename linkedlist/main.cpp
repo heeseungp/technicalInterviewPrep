@@ -8,26 +8,10 @@ int main() {
 
 	LinkedList hi;
 	hi.addtoTail(5);
-	hi.addtoTail(5);
 	hi.addtoTail(6);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
-	hi.addtoTail(5);
+	hi.addtoTail(7);
+
+	hi.iter_lastKth(1);
 	
-	hi.removeDups();
-
-	cout << "Size is: " << hi.size() << endl;
-	hi.print();
-
 	return 0;
 }
