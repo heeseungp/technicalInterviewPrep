@@ -1,6 +1,8 @@
 #include "Node.h"
 #include "LinkedList.h"
 #include <iostream>
+#include <set>
+using std::set;
 using std::cout;
 using std::endl;
 
@@ -19,7 +21,7 @@ LinkedList::LinkedList(int d) {
 
 void LinkedList::addtoTail(int value) {
 	Node* newNode = new Node(value);
-	if(head == NULL) {
+	if(head == NULL && tail == NULL) {
 		head = newNode;
 		tail = newNode;
 	} else {
@@ -31,80 +33,109 @@ void LinkedList::addtoTail(int value) {
 
 void LinkedList::addtoHead(int value) {
 	Node* newNode = new Node(value);
-	newNode->set_next(head);
-	head = newNode;
+	if(head == NULL && tail == NULL) {
+		head = newNode;
+		tail = newNode;
+	} else {
+		newNode->set_next(head);
+		head = newNode;
+	}
 	count++;
 }
 
 void LinkedList::addAt(int index, int value) {
 //index starts from zero
 //the index you provide is where your new node will be stored at
-	if(index == 0) {
-		this->addtoHead(value);
-	} else if(count > index){
-		Node* temp = head;
-		Node* newNode = new Node(value);
-		for(int i=0; i<=index; i++) {
-			if(i+1 == index) {
-				newNode->set_next(temp->nextNode());
-				temp->set_next(newNode);
-				break;
-			}
-			temp = temp->nextNode();
-		}
-		count++;
-	} else {
+	if(index > count) {
 		cout << "Invalid index entry" << endl;
+	} else {
+		if(index == 0) {
+			this->addtoHead(value);
+		} else if(index == count-1) {
+			this->addtoTail(value);
+		} else {
+			Node* newNode = new Node(value);
+			Node* temp = head;
+			for(int i=0; i<=index; i++) {
+				if(i+1 == index) {
+					newNode->set_next(temp->nextNode());
+					temp->set_next(newNode);
+					break;	
+				}
+				temp = temp->nextNode();
+			}
+			count++;
+		}
 	}
 } 
 
 void LinkedList::removeTail() {
-	if(count > 0) {
-		Node* temp = head;
-		for(int i=0; i<count; i++) {
-			if(i+1 == count) {
-				temp->set_next(NULL);
-				tail = temp;
-				break;
+	if(head == NULL && tail == NULL) {
+		cout << "Nothing to Remove" << endl;
+	} else {
+		if(head == tail) {
+			head = NULL;
+			tail = NULL;
+		} else {
+			Node* temp = head;
+			for(int i=0; i<count; i++) {
+				if(i+1 == count) {
+					temp->set_next(NULL);
+					tail = temp;
+					break;
+				}
+				temp = temp->nextNode();
 			}
-			temp = temp->nextNode();
 		}
 		count--;
-	} else {
-		cout << "Nothing to Remove" << endl;
 	}
 }
-void LinkedList::removeHead() {
-	if(count > 0) {
-		head = head->nextNode();
-		count--;
-	} else {
+
+void LinkedList::removeHead() {	
+	if(head == NULL && tail == NULL) {
 		cout << "Nothing to Remove" << endl;
+	} else {
+		if(head == tail) {
+			head = NULL;
+			tail = NULL;
+		} else {
+			head = head->nextNode();
+		}
+		count--;
 	}
 }
 
 void LinkedList::removeAt(int index) {
 //index starts from zero
 //remove the node at the given index
-	if(count > 0 && index < count) {
-		Node* temp = head;
-		for(int i=0; i<index; i++) {
-			if(i+1 == index) {
-				temp->set_next(temp->nextNode()->nextNode());
-				break;
-			}
-			temp = temp->nextNode();
-		}
-		count--;
+	if(head == NULL && tail == NULL) {
+		cout << "Nothing to Remove" << endl;
 	} else {
-		cout << "Nothing to Remove OR invalid index" << endl;
+		if(index >= count) {
+			cout << "Invalid index entry" << endl;
+		} else {
+			if(index == 0) {
+				this->removeHead();
+			} else if(index == count-1) {
+				this->removeTail();
+			} else {
+				Node* temp = head;
+				for(int i=0; i<=index; i++) {
+					if(i+1 == index) {
+						temp->set_next(temp->nextNode()->nextNode());
+						break;
+					}
+					temp = temp->nextNode();
+				}
+				count--;
+			}
+		}
 	}
-
 } 
 
 bool LinkedList::search(int value) {
 	Node* temp = head;
-	if(temp == NULL) {
+	if(head == NULL && tail == NULL) {
 		return false;
 	} else {
 		for(int i=0; i<count; i++) {
@@ -113,10 +144,11 @@ bool LinkedList::search(int value) {
 			}
 			temp = temp->nextNode();
 		}
+		return false;
 	}
 }
 
-int LinkedList::size() {
+int LinkedList::size() const{
 	return count;
 }
 
@@ -134,4 +166,55 @@ void LinkedList::print() {
 		}
 	}
 	cout << endl;
+}
+
+
+int LinkedList::get_head_data() const {
+	return head->get_data();
+}
+
+int LinkedList::get_tail_data() const {
+	return tail->get_data();
+}
+
+void LinkedList::removeDups() {
+	/*
+	Method solved using set
+	if(head != NULL) {
+		set<int> myset;
+		Node* prev = NULL;
+		Node* temp = head;
+		while(temp != NULL) {
+			if(myset.find(temp->get_data()) != myset.end()) {
+			// if it is found
+				prev->set_next(temp->nextNode());
+				count--;
+			} else {
+			// if it isn't found
+				myset.insert(temp->get_data());
+				prev = temp;
+			}
+			temp = temp->nextNode();
+		}
+	}
+	*/
+	
+	// method solved using no temporary buffer
+	if(head != NULL) {
+		Node* current = head;
+		Node* runner = head;
+		while(current != NULL) {
+			while(runner->nextNode() != NULL) {
+				if(current->get_data() == runner->nextNode()->get_data()) {
+					runner->set_next(runner->nextNode()->nextNode());
+					count--;
+				} else {
+					runner = runner->nextNode();
+				}
+			}
+			current = current->nextNode();
+			runner = current;
+		}
+
+	}
 }
