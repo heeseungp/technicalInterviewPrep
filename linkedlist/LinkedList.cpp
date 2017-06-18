@@ -278,3 +278,14 @@ void LinkedList::iter_lastKth(int k) {
 		cout << "Kth to last: " << current->get_data() << endl;
 	}
 }
+
+// problem 2.3 Delete Middle Node
+void LinkedList::deleteMiddle(Node* willDelete) {
+	if(willDelete == head || willDelete == tail) {
+		cout << "Not a Middle Node" << endl;
+	} else {
+		Node* temp = willDelete->nextNode();
+		willDelete->set_next(temp->nextNode());
+		willDelete->set_data(temp->get_data());
+	}
+}

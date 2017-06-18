@@ -31,6 +31,10 @@ class LinkedList {
 		int recur_lastKth(Node* node, int k);
 		// Iterative solution
 		void iter_lastKth(int k);
+
+		// Delete Middle Node: Implement an algorithm to delete a node in the middle (i.e., any node but the first and last node, not necessarily the exact middle) of a singly linked list, given only access to that node
+		void deleteMiddle(Node* willDelete);
+
 	private:
 		Node* head;
 		Node* tail;
