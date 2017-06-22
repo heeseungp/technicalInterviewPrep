@@ -289,3 +289,21 @@ void LinkedList::deleteMiddle(Node* willDelete) {
 		willDelete->set_data(temp->get_data());
 	}
 }
+
+// problem 2.4 Partition
+void LinkedList::partition(int value) {
+	Node* prev = head;
+	Node* next = prev->nextNode();
+
+	while(next != NULL) {
+		if(next->get_data() < value) {
+			prev->set_next(next->nextNode());
+			next->set_next(head);
+			head = next;
+			next = prev->nextNode();
+		} else {
+			prev = next;
+			next = next->nextNode();
+		}
+	}
+}

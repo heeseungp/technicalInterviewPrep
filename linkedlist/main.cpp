@@ -7,11 +7,12 @@ using std::endl;
 int main() {
 
 	LinkedList hi;
-	hi.addtoTail(5);
-	hi.addtoTail(6);
-	hi.addtoTail(7);
+	hi.addtoTail(1);
+	hi.addtoTail(2);
+	hi.print();
+	hi.partition(5);
+	hi.print();
 
-	hi.iter_lastKth(1);
-	
+
 	return 0;
 }
