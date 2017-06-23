@@ -1,6 +1,7 @@
 #include "Node.h"
 #include "LinkedList.h"
 #include <iostream>
+#include <math.h>
 using std::cout;
 using std::endl;
 
@@ -30,7 +31,47 @@ LinkedList iter_sumlists(LinkedList* first, LinkedList* second) {
 	return resultList;
 }
 // Sum Lists Follow Up
-LinkedList sumlists(LinkedList* first, LinkedList* second) {
+void sumlists(Node* first, Node* second) {
+	// shorter way is to just save it to int and make a new linkedlist
+	Node* firstTemp = first;
+	Node* secondTemp = second;
+	int firstnum, secondnum = 0;
+	int count = 0;
+
+	if(firstTemp != NULL) {
+		firstnum += firstTemp->get_data() * pow(10, count);
+		firstTemp = firstTemp->nextNode();
+		count++;
+	}
+	count = 0;
+	if(secondTemp != NULL) {
+		secondnum += secondTemp->get_data() * pow(10, count);
+		secondTemp = secondTemp->nextNode();
+		count++;
+	}
+	// cout << secondnum << endl;
+
+	int first_value, second_value, remaining = 0;
+	while(firstnum > 0) {
+		remaining = firstnum % 10;
+		first_value = first_value*10 + remaining;
+		firstnum /= 10;
+	}
+	remaining = 0;
+	while(secondnum > 0) {
+		remaining = secondnum % 10;
+		second_value = second_value*10 + remaining;
+		secondnum /= 10;
+	}
+	// finalvalue;
+	firstnum = firstnum + secondnum;
+	// cout << firstnum << endl;
+	LinkedList final; 
+	while(firstnum != 0) {
+		final.addtoTail(firstnum%10);
+		firstnum = firstnum/10;
+	}
+
 	
 }
 
@@ -39,18 +80,18 @@ int main() {
 	LinkedList first;
 	LinkedList second;
 
-	first.addtoTail(7);	
-	first.addtoTail(1);
-	first.addtoTail(6);
-	second.addtoTail(5);	
-	second.addtoTail(9);
-	second.addtoTail(2);
+	first.addtoTail(1);	
+	first.addtoTail(2);
+	first.addtoTail(3);
+	second.addtoTail(4);	
+	second.addtoTail(5);
+	second.addtoTail(6);
+
 
 	first.print();
 	second.print();
 
-
-	sumlists(&first, &second).print();
+	sumlists(first.get_head_node(), second.get_head_node());
 
 
 	return 0;
