@@ -31,48 +31,36 @@ LinkedList iter_sumlists(LinkedList* first, LinkedList* second) {
 	return resultList;
 }
 // Sum Lists Follow Up
-void sumlists(Node* first, Node* second) {
+LinkedList sumlists(Node* first, Node* second) {
 	// shorter way is to just save it to int and make a new linkedlist
-	Node* firstTemp = first;
-	Node* secondTemp = second;
-	int firstnum, secondnum = 0;
-	int count = 0;
+	LinkedList final;
+	Node* first_temp = first;
+	Node* second_temp = second;
+		
+	if(first != NULL || second != NULL) {
+		// converting the linkedlist to integer values
+		int first_result = 0;
+		int second_result = 0;
+		while(first_temp != NULL) {
+			first_result = first_result*10 + first_temp->get_data();
+			first_temp = first_temp->nextNode();
+		}
+		while(second_temp != NULL) {
+			second_result = second_result*10 + second_temp->get_data();
+			second_temp = second_temp->nextNode();
+		}
+		first_result = first_result + second_result;
+		// convert the integer value to linkedlist
+		while(first_result > 0) {
+			final.addtoHead(first_result%10);
+			first_result /= 10;
+		}
 
-	if(firstTemp != NULL) {
-		firstnum += firstTemp->get_data() * pow(10, count);
-		firstTemp = firstTemp->nextNode();
-		count++;
-	}
-	count = 0;
-	if(secondTemp != NULL) {
-		secondnum += secondTemp->get_data() * pow(10, count);
-		secondTemp = secondTemp->nextNode();
-		count++;
-	}
-	// cout << secondnum << endl;
-
-	int first_value, second_value, remaining = 0;
-	while(firstnum > 0) {
-		remaining = firstnum % 10;
-		first_value = first_value*10 + remaining;
-		firstnum /= 10;
-	}
-	remaining = 0;
-	while(secondnum > 0) {
-		remaining = secondnum % 10;
-		second_value = second_value*10 + remaining;
-		secondnum /= 10;
-	}
-	// finalvalue;
-	firstnum = firstnum + secondnum;
-	// cout << firstnum << endl;
-	LinkedList final; 
-	while(firstnum != 0) {
-		final.addtoTail(firstnum%10);
-		firstnum = firstnum/10;
+	} else {
+		final.addtoTail(0);
 	}
 
-	
+	return final;
 }
 
 int main() {
@@ -80,19 +68,12 @@ int main() {
 	LinkedList first;
 	LinkedList second;
 
-	first.addtoTail(1);	
-	first.addtoTail(2);
-	first.addtoTail(3);
-	second.addtoTail(4);	
-	second.addtoTail(5);
-	second.addtoTail(6);
-
 
 	first.print();
-	second.print();
+	second.print( );
 
-	sumlists(first.get_head_node(), second.get_head_node());
+	sumlists(first.get_head_node(), second.get_head_node()).print();
 
 
 	return 0;
-} 
+} 	
