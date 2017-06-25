@@ -45,6 +45,29 @@ void LinkedList::addtoHead(int value) {
 	count++;
 }
 
+
+void LinkedList::addNodetoTail(Node* newNode) {
+	if(head != NULL && tail != NULL) {
+		tail->set_next(newNode);
+		tail = newNode;	
+	} else {
+		head = newNode;
+		tail = newNode;
+	}
+	count++;
+}
+
+void LinkedList::addNodetoHead(Node* newNode) {
+	if(head != NULL && tail != NULL) {
+		newNode->set_next(head);
+		head = newNode;
+	} else {
+		head = newNode;
+		tail = newNode;
+	}
+	count++;
+}
+
 void LinkedList::addAt(int index, int value) {
 //index starts from zero
 //the index you provide is where your new node will be stored at

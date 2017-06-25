@@ -8,6 +8,8 @@ class LinkedList {
 		LinkedList(int data);
 		void addtoTail(int value);
 		void addtoHead(int value);
+		void addNodetoTail(Node* newNode);
+		void addNodetoHead(Node* newNode);
 		void addAt(int index, int value); //index starts from zero
 		void removeTail();
 		void removeHead();
