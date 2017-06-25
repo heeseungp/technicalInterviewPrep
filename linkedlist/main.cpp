@@ -5,6 +5,7 @@
 using std::cout;
 using std::endl;
 
+// problem 2.5
 // Sum Lists: Write a function that adds the two numbers and returns the sum as a linked list	
 LinkedList iter_sumlists(LinkedList* first, LinkedList* second) {
 	//iterative version
@@ -68,12 +69,19 @@ int main() {
 	LinkedList first;
 	LinkedList second;
 
-
-	first.print();
-	second.print( );
-
-	sumlists(first.get_head_node(), second.get_head_node()).print();
-
+	first.addtoTail(1);
+	first.addtoTail(2);
+	first.addtoTail(3);
+	first.addtoTail(2);
+	first.addtoTail(1);
+	cout << first.palindrome() << endl;
+	second.addtoTail(1);
+	second.addtoTail(2);
+	second.addtoTail(2);
+	second.addtoTail(1);
+	cout << second.palindrome() << endl;
+	second.addtoTail(1);
+	cout << second.palindrome() << endl;
 
 	return 0;
 } 	

@@ -2,7 +2,9 @@
 #include "LinkedList.h"
 #include <iostream>
 #include <set>
+#include <stack>
 using std::set;
+using std::stack;
 using std::cout;
 using std::endl;
 
@@ -306,4 +308,30 @@ void LinkedList::partition(int value) {
 			next = next->nextNode();
 		}
 	}
+}
+
+
+
+bool LinkedList::palindrome() {
+	Node* current = head;
+	Node* runner = head;
+	stack<int> mystack;
+
+	while(runner != NULL && runner->nextNode() != NULL) {
+		mystack.push(current->get_data());
+		current = current->nextNode();
+		runner = runner->nextNode()->nextNode();
+	}
+	if(runner != NULL) {
+		current = current->nextNode();
+	}
+	while(current != NULL) {
+		if(!mystack.empty() && current->get_data() == mystack.top()) {
+			mystack.pop();
+			current = current->nextNode();
+		} else {
+			return false;
+		}
+	}
+	return true;
 }
