@@ -20,19 +20,22 @@ int main() {
 	LinkedList first;
 	LinkedList second;
 
-	Node newNode(10);
+	Node firstnode(3);
+	Node secondnode(4);
+	Node thirdnode(5);
 
-	first.addNodetoTail(&newNode);
+	firstnode.set_next(&secondnode);
+	secondnode.set_next(&thirdnode);
+	thirdnode.set_next(&firstnode);
 
-	second.addtoTail(1);
-	second.addNodetoTail(&newNode);
+	first.addtoTail(1);
+	first.addtoTail(2);
+	first.addNodetoTail(&firstnode);
 
+	// first.print();
+	// second.print();
 
-	first.print();
-	second.print();
-
-	cout << intersection(first, second)->get_data()<< endl;
-
+	cout << first.loopDetection()->get_data() << endl;
 
 	return 0;
 } 	

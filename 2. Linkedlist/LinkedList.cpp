@@ -361,5 +361,24 @@ bool LinkedList::palindrome() {
 
 // problem 2.8 Loop Detection
 Node* LinkedList::loopDetection() {
-
+	Node* temp = new Node(404);
+	if(head != NULL) {
+		return temp;
+	} else {
+		Node* current = head;
+		Node* runner = head;
+		while(current != NULL && runner != NULL && runner->nextNode() != NULL) {
+			if(current == runner) {
+				current = head;
+				while(current != runner) {
+					current = current->nextNode();
+					runner = runner->nextNode();
+				}
+				return current;
+			}
+			current = current->nextNode();
+			runner = runner->nextNode()->nextNode();
+		}
+		return temp;
+	}
 }
