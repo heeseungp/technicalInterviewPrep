@@ -34,7 +34,7 @@ void FixedStack::push(int index, int value) {
 	} else if(size[index] > 2) {
 		cout << "Full Stack: Cannot Insert." << endl;		
 	} else {
-		int pointer = numStack * index + size[index] + 1;
+		int pointer = numStack * index + size[index];
 		data[pointer] = value;
 		size[index]++;
 	}
@@ -45,18 +45,18 @@ int FixedStack::peek(int index) {
 		cout << "Invalid index entry" << endl;
 		return 404;
 	} else {
-		return data[numStack * index + size[index]];
+		return data[numStack * index + size[index] - 1];
 	}
 }
 
 bool FixedStack::isEmpty(int index) {
 	if(index > 3 || index < 0) {
 		cout << "Invalid index entry" << endl;
-		return 0;
-	} else if(size[index] < 1) {
-		return 0;
-	} else {
 		return 1;
+	} else if(size[index] < 1) {
+		return 1;
+	} else {
+		return 0;
 	}
 }
 
@@ -72,7 +72,7 @@ void FixedStack::print(int index) {
 			for(int i=0; i<size[index]; i++) {
 				cout << data[pointer + i];
 				if(i+1 < size[index]) {
-					cout << "->";
+					cout << "<-";
 				}
 			}
 			cout << endl;
