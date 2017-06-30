@@ -10,6 +10,7 @@ public:
 	bool isEmpty(int index);
 	void print(int index);
 
+	void get_nextIndex();
 private:
 	const static int stackSize = 9;
 	int data[stackSize];
