@@ -1,0 +1,15 @@
+3.1 Three Stacks in One Array 
+	1st Solution: All same size stacks		
+		./3_1/cpp/FixedStack.h
+		./3_1/cpp/FixedStack.cpp
+	2nd Solution: All stack sizes can be different, but all stack sizes must be within array size since we are using static sized array (no vector)
+		./3_1/cpp/DynamicStack.h 
+		./3_1/cpp/DynamicStack.cpp
+
+
+3.2 Stack Min
+	./MinStack.h
+	./MinStack.cpp		
+
+
+3.3 Stack of Plates
