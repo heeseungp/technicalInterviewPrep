@@ -13,7 +13,7 @@ public:
 	bool isEmpty();
 	void print();
 
-private:
+protected:
 	StackNode* top;
 
 };

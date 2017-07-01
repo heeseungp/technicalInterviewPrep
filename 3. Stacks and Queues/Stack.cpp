@@ -9,7 +9,7 @@ Stack::Stack() {
 
 int Stack::pop() {
 	if(top == NULL) {
-		cout << "Not found" << endl;
+		// cout << "Not found" << endl;
 		return 404;
 	} else {
 		int result = top->getdata();
@@ -26,7 +26,7 @@ void Stack::push(int value) {
 
 int Stack::peek() {
 	if(top == NULL) {
-		cout << "Nothing on Stack" << endl;
+		// cout << "Nothing on Stack" << endl;
 		return 404;
 	} else {
 		return top->getdata();
