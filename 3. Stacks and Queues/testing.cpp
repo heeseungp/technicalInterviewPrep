@@ -1,27 +1,41 @@
 #include "StackNode.h"
 #include "Stack.h"
 #include "MinStack.h"
+#include "SetofStacks.h"
 #include <iostream>
+#include <vector>
 using std::cout;
 using std::endl;
+using std::vector;
 
 int main() {	
 
-	MinStack first;
-	first.push(1);
-	first.push(2);
-	first.push(3);
-	first.push(5);
-	first.push(1);
-	first.push(0);
+	SetofStacks hi;
+	// hi.push(1);
+	// hi.push(2);
+	// hi.push(3);
+	// cout << "peeking: " << hi.peek() << endl;
+	// cout << "is it empty?: "<< hi.isEmpty() << endl << endl;
 
-	first.print();
-	cout << first.getMin() << endl;
+	// hi.push(6);
+	// cout << "peeking: " << hi.peek() << endl;
 
-	first.pop();
+	// hi.pop();
+	// cout <<  "peeking: " << hi.peek() << endl;
 
-	first.print();
-	cout << first.getMin() << endl;
+	hi.push(1);
+	hi.push(2);
+	hi.push(3);
+	hi.push(4);
+	hi.push(5);
+	hi.push(6);
+	hi.push(7);
+	hi.push(8);
+	
+	
+
+	hi.print();
+
 
 	return 0;
 }
