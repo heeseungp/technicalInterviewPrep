@@ -13,3 +13,6 @@
 
 
 3.3 Stack of Plates
+	./SetofStacks.h
+	./SetofStacks.cpp
+
