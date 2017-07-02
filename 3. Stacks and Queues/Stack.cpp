@@ -5,6 +5,7 @@ using std::endl;
 
 Stack::Stack() {
 	top = NULL;
+	size = 0;
 }
 
 int Stack::pop() {
@@ -14,6 +15,7 @@ int Stack::pop() {
 	} else {
 		int result = top->getdata();
 		top = top->getnext();
+		size--;
 		return result;
 	}
 }
@@ -22,9 +24,10 @@ void Stack::push(int value) {
 	StackNode* newnode = new StackNode(value);
 	newnode->setnext(top);
 	top = newnode;
+	size++;
 }
 
-int Stack::peek() {
+int Stack::peek() const {
 	if(top == NULL) {
 		// cout << "Nothing on Stack" << endl;
 		return 404;
@@ -33,7 +36,7 @@ int Stack::peek() {
 	}
 }
 
-bool Stack::isEmpty() {
+bool Stack::isEmpty() const {
 	if(top == NULL) {
 		return 1;
 	} else {
@@ -46,7 +49,6 @@ void Stack::print() {
 		cout << "Nothing on Stack" << endl;
 	} else {
 		StackNode* temp = top;
-		cout << "From Top to Bottom" << endl;
 		while(temp != NULL) {
 			cout << temp->getdata();
 			if(temp->getnext() != NULL) {
@@ -54,6 +56,14 @@ void Stack::print() {
 			}
 			temp = temp->getnext();
 		} 
-		cout << endl;
 	}
+}
+
+
+int Stack::getSize() const {
+	return size;
+}
+
+StackNode* Stack::getTop() const {
+	return top;
 }

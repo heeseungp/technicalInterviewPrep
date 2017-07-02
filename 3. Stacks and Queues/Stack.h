@@ -9,13 +9,14 @@ public:
 	Stack();
 	int pop();
 	void push(int value);
-	int peek();
-	bool isEmpty();
+	int peek() const;
+	bool isEmpty() const;
 	void print();
-
+	int getSize() const;
+	StackNode* getTop() const;
 protected:
 	StackNode* top;
-
+	int size;
 };
 
 #endif
