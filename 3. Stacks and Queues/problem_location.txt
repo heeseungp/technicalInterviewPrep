@@ -25,3 +25,19 @@
 3.5 Sort Stack
 	./Stack.h
 	./Stack.cpp
+
+
+3.6 Animal Shelter
+
+
+Stack Implementation
+	./StackNode.h
+	./StackNode.cpp
+	./Stack.h
+	./Stack.cpp
+
+
+Queue Implementation
+	./Queue.h
+	./Queue.cpp
+	

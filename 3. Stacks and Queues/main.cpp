@@ -1,33 +1,33 @@
-#include "Stack.h"
-#include "StackNode.h"
-#include "MyQueue.h"
+#include "Queue.h"
 #include <iostream>
 using std::cout;
 using std::endl;
 
 int main() {
 
-	Stack hi;
-	hi.sortStack();
+	Queue hi;
+	cout << "Queue Empty?: " << hi.isEmpty() << endl;
+	cout << "Queue Size: " << hi.size() << endl;
+	cout << "Queue Peek: " << hi.peek() << endl;
+
 	hi.push(1);
-	hi.push(2);
+	cout << "Queue Empty?: " << hi.isEmpty() << endl;
+	cout << "Queue Size: " << hi.size() << endl;
+	cout << "Queue Peek: " << hi.peek() << endl;
+
+	hi.push(2);	
+	cout << "Queue Empty?: " << hi.isEmpty() << endl;
+	cout << "Queue Size: " << hi.size() << endl;
+	cout << "Queue Peek: " << hi.peek() << endl;
+
 	hi.push(3);
-	hi.push(4);
-	hi.push(5);
-	hi.print();
-	cout << endl;
-	hi.sortStack();
-	hi.print();
-	cout << endl;
+	cout << "Queue Empty?: " << hi.isEmpty() << endl;
+	cout << "Queue Size: " << hi.size() << endl;
+	cout << "Queue Peek: " << hi.peek() << endl;
 
-	hi.pop();
-	hi.print();
-	cout << endl;
+	cout << "Queue Popping: " << hi.pop() << endl;
+	cout << "Queue Peek: " << hi.peek() << endl;
 
-	hi.sortStack();
-	hi.print();
-	cout << endl;
-
-
+	
 	return 0;
 }
