@@ -64,6 +64,25 @@ int Stack::getSize() const {
 	return size;
 }
 
+
 StackNode* Stack::getTop() const {
 	return top;
+}
+
+
+void Stack::sortStack() {
+	Stack helper;
+	int temp;
+
+	while(!this->isEmpty()) {
+		temp = this->pop();
+		while(!helper.isEmpty() && temp < helper.peek()) {
+			this->push(helper.pop());
+		}
+		helper.push(temp);
+	}
+
+	while(!helper.isEmpty()) {
+		this->push(helper.pop());
+	}
 }

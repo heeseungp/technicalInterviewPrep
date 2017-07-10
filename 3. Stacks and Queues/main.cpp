@@ -7,19 +7,26 @@ using std::endl;
 
 int main() {
 
-	MyQueue first;
-	cout << "Is it empty?: " << first.isEmpty() << endl;
-	first.push(1);
-	first.push(2);
-	first.push(3);
-	first.push(4);
-	first.push(5);
-	cout << "Is it empty?: " << first.isEmpty() << endl;
-	cout << "Peeking: " << first.peek() << endl;
-	cout << "Popping: " << first.pop() << endl;
-	cout << "Popping: " << first.pop() << endl;
-	cout << "Popping: " << first.pop() << endl;
-	cout << "Peeking: " << first.peek() << endl;
+	Stack hi;
+	hi.sortStack();
+	hi.push(1);
+	hi.push(2);
+	hi.push(3);
+	hi.push(4);
+	hi.push(5);
+	hi.print();
+	cout << endl;
+	hi.sortStack();
+	hi.print();
+	cout << endl;
+
+	hi.pop();
+	hi.print();
+	cout << endl;
+
+	hi.sortStack();
+	hi.print();
+	cout << endl;
 
 
 	return 0;

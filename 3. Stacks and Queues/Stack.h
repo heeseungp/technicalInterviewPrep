@@ -14,6 +14,7 @@ public:
 	void print();
 	int getSize() const;
 	StackNode* getTop() const;
+	void sortStack();
 protected:
 	StackNode* top;
 	int size;
