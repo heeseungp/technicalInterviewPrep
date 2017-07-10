@@ -1,34 +1,26 @@
 #include "Stack.h"
 #include "StackNode.h"
+#include "MyQueue.h"
 #include <iostream>
 using std::cout;
 using std::endl;
 
 int main() {
 
-	Stack mystack;
+	MyQueue first;
+	cout << "Is it empty?: " << first.isEmpty() << endl;
+	first.push(1);
+	first.push(2);
+	first.push(3);
+	first.push(4);
+	first.push(5);
+	cout << "Is it empty?: " << first.isEmpty() << endl;
+	cout << "Peeking: " << first.peek() << endl;
+	cout << "Popping: " << first.pop() << endl;
+	cout << "Popping: " << first.pop() << endl;
+	cout << "Popping: " << first.pop() << endl;
+	cout << "Peeking: " << first.peek() << endl;
 
-	mystack.push(0);
-	mystack.push(1);
-	mystack.push(2);
-	cout << "Current stack: ";
-	mystack.print();
 
-	//popping
-	cout << "POPPING" << endl;
-	mystack.pop();
-	mystack.print();
-
-	//peeking 
-	cout << "The top of the stack: ";
-	cout << mystack.peek() << endl;
-
-	//isempty checking 
-	cout << "Is it empty?: ";
-	cout << mystack.isEmpty() << endl;
-
-	//printing
-	cout << "Printing once again" << endl;
-	mystack.print();
 	return 0;
 }

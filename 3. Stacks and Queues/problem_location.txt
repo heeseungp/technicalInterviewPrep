@@ -16,3 +16,7 @@
 	./SetofStacks.h
 	./SetofStacks.cpp
 
+3.4 Queue via Stacks
+	./MyQueue.h
+	./MyQueue.cpp
+
