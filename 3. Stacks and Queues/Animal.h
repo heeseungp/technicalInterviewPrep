@@ -2,11 +2,10 @@
 #define ANIMAL_H
 
 class Animal {
-	public:
-		Animal() { time++;}
-
-	protected:
-		static int time;
+public:
+	static int time;
 };
+
+int Animal::time = 0;
 
 #endif

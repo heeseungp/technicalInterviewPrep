@@ -31,6 +31,8 @@
 	./Animal.h
 	./Dog.h
 	./Cat.h
+	//fyi: the stack node is not in template (the data is int), therefore it won't compile
+	./AnimalShelter.h
 	
 
 Stack Implementation
