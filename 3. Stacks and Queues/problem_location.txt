@@ -28,7 +28,10 @@
 
 
 3.6 Animal Shelter
-
+	./Animal.h
+	./Dog.h
+	./Cat.h
+	
 
 Stack Implementation
 	./StackNode.h
@@ -40,4 +43,3 @@ Stack Implementation
 Queue Implementation
 	./Queue.h
 	./Queue.cpp
-	
