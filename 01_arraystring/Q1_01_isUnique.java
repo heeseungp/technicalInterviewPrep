@@ -28,12 +28,14 @@ public class Q1_01_isUnique {
 
 	public static boolean firstSolution(String input) {
 		
+		if(input.length() > 128)
+			return false;
+		
 		Hashtable<Character, Integer> lookup = new Hashtable<Character, Integer>(); // create a hashtable
 		for(int i=0; i<input.length(); i++) {
 			if(lookup.containsKey(input.charAt(i))) 
 				return false;
-			else 
-				lookup.put(input.charAt(i), 0);
+			lookup.put(input.charAt(i), 0);
 		}
 		return true;
 	}
