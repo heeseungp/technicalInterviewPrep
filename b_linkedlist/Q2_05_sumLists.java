@@ -29,3 +29,99 @@
 
 
 */
+
+
+package b_linkedlist;
+import java.util.*;
+
+
+public class Q2_05_sumLists {
+
+
+	public static ListNode questionA(ListNode first, ListNode second) {
+
+		int result = convertToIntA(first) + convertToIntA(second);
+		// System.out.println(result);
+		ListNode output = new ListNode();
+		ListNode solution = output;
+		while(result > 0) {
+			int onedigit = result%10;
+			result /= 10;
+			solution.next = new ListNode(onedigit);
+			solution = solution.next;
+		}
+		return output.next;
+	}
+
+	// under construction
+	public static int questionB(ListNode first, ListNode second) {
+
+		int result = convertToIntB(first) + convertToIntB(second);
+		return result;
+	}
+
+	public static int convertToIntA(ListNode head) {
+
+		int result = 0;
+		int power = 0;
+		while(head != null) {
+			result += head.data * Math.pow(10, power++);
+			head = head.next;
+		}
+
+		return result;
+	}
+
+	public static int convertToIntB(ListNode head) {
+
+		int result = 0;
+		while(head != null) {
+			result *= 10;
+			result += head.data;
+			head = head.next;
+		}
+
+		return result;
+	}
+
+	public static void printListNode(ListNode head) {
+		System.out.println("");
+		while(head != null) {
+			System.out.print(head.data);
+			if(head.next != null) {
+				System.out.print(" -> ");
+			}
+			head = head.next;
+		}
+		System.out.println("");
+		System.out.println("");
+	}	
+
+	public static void main(String[] args){
+
+		ListNode a = new ListNode(9);
+		ListNode b = new ListNode(2);
+		ListNode c = new ListNode(3);
+		
+		ListNode d = new ListNode(1);
+		ListNode e = new ListNode(5);
+		ListNode f = new ListNode(6);
+		ListNode g = new ListNode(1);
+
+		a.next = b;
+		b.next = c;
+
+		d.next = e;
+		e.next = f; 
+		f.next = g;
+
+		printListNode(a);
+		printListNode(d);
+
+		// printListNode(questionA(a, d));
+		// printListNode(questionB(a, d));
+
+
+
+	}
+}
